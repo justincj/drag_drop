@@ -1,30 +1,32 @@
 <script>
 	import { range } from 'ramda';
-	const arr = range(0, 7);
+	const arr = range(0, 8);
 </script>
 
-<div class="chessboardStyles">
-	{#each arr as rng1, key1}
-		{#each arr as rng2, key2}
+<div class="chessboard">
+	{#each arr as rng1}
+		{#each arr as rng2}
 			{#if (rng1 + rng2) % 2}
-				<div class="squareStyles" style="background-color:black" />
+				<div class="square" style="background-color:black" />
+			{:else}
+				<div class="square" />
 			{/if}
-			<div class="squareStyles" />
 		{/each}
 	{/each}
 </div>
 
 <style>
-	.chessboardStyles {
+	.chessboard {
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
 		grid-template-rows: repeat(8, 1fr);
+		gap: 1px;
 		width: 500px;
 		height: 500px;
 		border: 3px solid lightgrey;
 	}
 
-	.squareStyles {
+	.square {
 		width: 100%;
 		height: 100%;
 		display: flex;
